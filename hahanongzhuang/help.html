@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link rel="stylesheet" href="css/bootstrap-3.3.4-dist/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/shouye.css">
+	<title>帮助中心</title>
+</head>
+<body>
+	<div class="index">
+		<header class="header2">
+			<a href="#" class="left4">
+				<i class="glyphicon glyphicon-chevron-left "></i>
+			</a>
+			<h1 class="right4">帮助中心</h1>
+		</header>
+		<section class="se" id="se">
+			<div>
+				<div class="help_list">
+					<!-- <ul>
+						<li><a href="#">物流流程</a></li>
+						<li><a href="#">物流流程</a></li>
+						<li><a href="#">物流流程</a></li>
+						<li><a href="#">物流流程</a></li>
+						<li><a href="#">物流流程</a></li>
+						<li><a href="#">物流流程</a></li>
+					</ul> -->
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<script src="js/jq.js"></script>
+	<script type="text/javascript" src="js/iscroll5.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script>
+		var myPage=new IScroll("#se",{
+		    click:true,
+		    probeType:3,
+		    mouseWheel:true
+	    })
+
+	    $.ajax({
+	    	url:"data2.json",
+	    	type:"post",
+	    	dataType:"json",
+	    	success:function(e){
+	    		console.log(e);
+	    		var html="";
+	    		$.each(e,function(i,v){
+	    		$.each(v,function(index,val){
+	    			html+='<ul>'+
+						'<li><a href="#">'+val.tit+'</a></li>'+
+					'</ul>';
+	    			})
+	    		})
+	    		$(".help_list").html(html);
+	    		myPage.refresh();
+	    	}
+	    })
+	</script>
+</body>
+</html>
